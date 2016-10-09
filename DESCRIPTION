@@ -15,4 +15,6 @@ Imports: dplyr,
     rgdal,
     maptools,
     stringr,
-    gdalUtils
+    gdalUtils,
+    raster,
+    data.table
