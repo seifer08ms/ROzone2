@@ -20,7 +20,7 @@
 #' vals <- 1:n
 #' p <- data.frame(xy, name=vals)
 #' coordinates(p) <- ~x+y
-#' ## If you are using windows,you must Sets local GDAL installation options before running function###
+#' ## If you are using windows,you must set local GDAL installation options before running function###
 #' #Not run:
 #' #gdal_setInstallation(search_path = 'the path of OSGeo4W64/bin',rescan = T)
 #' r2 <- rasterize.gdal(p, field = 'name', res =res(r)[1],extent=extent(r))
