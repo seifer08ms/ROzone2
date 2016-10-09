@@ -3,10 +3,12 @@
 #' This function generatea a grid-shape polygons of  all daily rozone dataset in one year.
 #' @param datapath the path of year folder,the default value is data-raw/2010
 #' @export
-#' @return a spatial polygon data frame which contains daily datasets in this year.
+#' @return a spatial polygon data frame which contains daily datasets in this year.Every daily value will attached as a columns.
 #' @examples
+#' ###### the default path is 'data-raw/2010'. You should change it to your data folder. ###
 #' grid.poly<-loadGRID()
 #' plot(grid.poly)
+#' ###### set the path of data #######
 #' grid.poly<-loadGRID(datapath='data-raw/2010')
 loadGRID<-function(datapath='data-raw/2010'){
     # datapath<-'data/2010'
