@@ -19,13 +19,24 @@ rasterize.gdal(x, field, res = 10000, extent = NULL)
 RasterLayer
 }
 \description{
-This function rasterize a vector data by gdal binary utils.
+This function rasterize a vector data by gdal binary utils. This is a wrap function of gdalUtils::gdal_rasterize.
 }
 \examples{
-###### the default path is 'data-raw/2010'. You should change it to your data folder. ###
-grid.poly<-loadGRID()
-plot(grid.poly)
-###### set the path of data #######
-grid.poly<-loadGRID(datapath='data-raw/2010')
+###############################
+# rasterize points
+###############################
+r <- raster(ncols=36, nrows=18)
+n <- 1000
+x <- runif(n) * 360 - 180
+y <- runif(n) * 180 - 90
+xy <- cbind(x, y)
+# with a SpatialPointsDataFrame
+vals <- 1:n
+p <- data.frame(xy, name=vals)
+coordinates(p) <- ~x+y
+## If you are using windows,you must Sets local GDAL installation options before running function###
+#Not run:
+#gdal_setInstallation(search_path = 'the path of OSGeo4W64/bin',rescan = T)
+r2 <- rasterize.gdal(p, field = 'name', res =res(r)[1],extent=extent(r))
 }
 
