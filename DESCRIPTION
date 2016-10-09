@@ -1,5 +1,5 @@
 Package: ROzone2
-Title: a R package for processing ROzone data
+Title: Routines for processing ROzone data
 Version: 0.0.0.9000
 Authors@R: person("chenliang", "Wang", email = "hi181904665@gmail.com", role = c("aut", "cre"))
 Description: spatializing raw data and compute zonal statistics .
