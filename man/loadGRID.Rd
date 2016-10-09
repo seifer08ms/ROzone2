@@ -21,6 +21,5 @@ grid.poly<-loadGRID()
 plot(grid.poly)
 ###### set the path of data #######
 grid.poly<-loadGRID(datapath='data-raw/2010')
-
 }
 
