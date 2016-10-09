@@ -7,17 +7,20 @@
 loadGRID(datapath = "data-raw/2010")
 }
 \arguments{
-\item{datapath}{the path of year folder}
+\item{datapath}{the path of year folder,the default value is data-raw/2010}
 }
 \value{
-a spatial polygon data frame which contains daily datasets in this year.
+a spatial polygon data frame which contains daily datasets in this year.Every daily value will attached as a columns.
 }
 \description{
 This function generatea a grid-shape polygons of  all daily rozone dataset in one year.
 }
 \examples{
+###### the default path is 'data-raw/2010'. You should change it to your data folder. ###
 grid.poly<-loadGRID()
 plot(grid.poly)
+###### set the path of data #######
 grid.poly<-loadGRID(datapath='data-raw/2010')
+
 }
 

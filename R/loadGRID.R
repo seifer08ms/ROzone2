@@ -10,39 +10,13 @@
 #' plot(grid.poly)
 #' ###### set the path of data #######
 #' grid.poly<-loadGRID(datapath='data-raw/2010')
+#'
+
 loadGRID<-function(datapath='data-raw/2010'){
     # datapath<-'data/2010'
     year<-basename(datapath)
     CMAQ_files.path.full<-list.files(path=datapath,pattern = 'txt$',
                                      include.dirs = T,full.names = T)
-    library(dplyr)
-    library(tidyr)
-    library(rgdal)
-    library(maptools)
-    china_grid<-read.csv(CMAQ_files.path.full[1],header = F,sep='')
-    names(china_grid)<-c('row_id','col_id','grid_id',
-                         c('lat','long')%>%rep(5)%>%paste0(rep(1:5,each=2)),
-                         'O3')
-    lat.col<-3+seq(1,by=2,length.out = 5)
-    long.col<-lat.col+1
-    create.poly.i<-function(i){
-        lat.i<-china_grid[i,lat.col]%>%stack%>%'['(,1)
-        long.i<-china_grid[i,long.col]%>%stack%>%'['(,1)
-        coords.i<-cbind(long.i,lat.i)
-        Polygon(coords.i)%>%list%>%Polygons(paste0('pts',i))
-    }
-    grid.cache<-'data/grid_rozone.rds'
-    if(!file.exists(grid.cache)){
-        grid.poly<-lapply(1:nrow(china_grid),FUN =create.poly.i )%>%
-        SpatialPolygons(1:nrow(china_grid))
-    proj4string(grid.poly)<-'+init=epsg:4326'
-        saveRDS(grid.poly,file = grid.cache)
-    }else{
-        grid.poly<-readRDS(grid.cache)
-    }
-    # sapply(slot(grid.poly, "polygons"), slot, "area")
-    # different areas per polygon
-    library(stringr)
     CMAQ_files.names<-list.files(path=datapath,pattern = 'txt$')%>%
         str_replace_all(pattern = paste0('CMAQ_China_8hmax_O3\\.',year,'|\\.txt'),
                         replacement = '')
