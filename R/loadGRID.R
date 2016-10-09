@@ -10,13 +10,16 @@
 #' plot(grid.poly)
 #' ###### set the path of data #######
 #' grid.poly<-loadGRID(datapath='data-raw/2010')
-#'
-
 loadGRID<-function(datapath='data-raw/2010'){
     # datapath<-'data/2010'
     year<-basename(datapath)
     CMAQ_files.path.full<-list.files(path=datapath,pattern = 'txt$',
                                      include.dirs = T,full.names = T)
+    library(dplyr)
+    library(tidyr)
+    library(rgdal)
+    library(maptools)
+    library(stringr)
     CMAQ_files.names<-list.files(path=datapath,pattern = 'txt$')%>%
         str_replace_all(pattern = paste0('CMAQ_China_8hmax_O3\\.',year,'|\\.txt'),
                         replacement = '')
