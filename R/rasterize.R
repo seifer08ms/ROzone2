@@ -24,7 +24,7 @@ rasterize.gdal<-function(x,field,res=1e4,extent=NULL){
         extent.x<-extent
     }
     dst_filename.dsn<-file.path(tempdir(),paste0(field,'.img') )
-    gdal_rasterize(src_datasource.dsn,dst_filename = dst_filename.dsn,a=field,
+    gdalUtils::gdal_rasterize(src_datasource.dsn,dst_filename = dst_filename.dsn,a=field,
                    te =c(extent.x@xmin,extent.x@ymin,
                          extent.x@xmax,extent.x@ymax),
                    a_nodata=32768,of='HFA',tr=c(res,res),verbose=T,output_Raster=T)
