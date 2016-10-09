@@ -16,7 +16,6 @@ loadGRID<-function(datapath='data-raw/2010'){
     CMAQ_files.path.full<-list.files(path=datapath,pattern = 'txt$',
                                      include.dirs = T,full.names = T)
     library(dplyr)
-    library(tidyr)
     library(rgdal)
     library(maptools)
     library(stringr)
