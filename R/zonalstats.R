@@ -28,6 +28,7 @@ zonalStat<-function(zonal.ras,val.ras,stat='mean'){
     myZonal <- function (x, z, stat, digits =0, na.rm = TRUE,
                          ...) {
         library(data.table)
+        library(raster)
         fun <- match.fun(stat)
         vals <- getValues(x)
         zones <- round(getValues(z), digits = digits)
