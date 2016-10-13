@@ -26,6 +26,7 @@
 #' r2 <- rasterize.gdal(p, field = 'name', res =res(r)[1],extent=extent(r))
 rasterize.gdal<-function(x,field,res=1e4,extent=NULL){
     library(rgdal)
+    library(raster)
     src_datasource.dsn<-file.path(tempdir(),'zonal.shp')
     if(file.exists(src_datasource.dsn)) file.remove(src_datasource.dsn)
     writeOGR(x,dsn = src_datasource.dsn,driver = 'ESRI Shapefile',layer = 'zonal',
