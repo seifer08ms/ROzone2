@@ -25,7 +25,7 @@
 #' #Not run:
 #' #gdal_setInstallation(search_path = 'the path of OSGeo4W64/bin',rescan = T)
 #' r2 <- rasterize.gdal(p, field = 'name', res =res(r)[1],extent=extent(r))
-zonalStat<-function(zonal.ras,val.ras,stat='mean',digits=0){
+zonalStat<-function(zonal.ras,val.ras,stat='mean',digits=0,na.rm=T,...){
 
     library(data.table)
     library(raster)
@@ -34,7 +34,7 @@ zonalStat<-function(zonal.ras,val.ras,stat='mean',digits=0){
     zones <- round(getValues(zonal.ras), digits = digits)
     rDT <- data.table(vals, z=zones)
     setkey(rDT, z)
-    Zstat<-data.frame(rDT[, lapply(.SD, fun), by=z])
+    Zstat<-data.frame(rDT[, lapply(.SD, fun,na.rm=na.rm,...), by=z])
     colnames(Zstat)[2:length(Zstat)]<-
         paste0("B", c(1:(length(Zstat)-1)), "_",stat)
     return (Zstat)
