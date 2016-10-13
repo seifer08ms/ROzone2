@@ -3,3 +3,4 @@
 export(loadGRID)
 export(rasterize.gdal)
 export(zonalStat)
+import(data.table)

@@ -1,6 +1,7 @@
 #' High performance zonal statistics function.
 #'
 #' This function calculate statistics for each zone defined by a zone dataset.
+#' @import data.table
 #' @param zonal.ras a raster objects indicating each zone
 #' @param val.ras the raster dataset to be calculated
 #' @param stat character.statistics method to be performed
@@ -24,20 +25,25 @@
 #' #Not run:
 #' #gdal_setInstallation(search_path = 'the path of OSGeo4W64/bin',rescan = T)
 #' r2 <- rasterize.gdal(p, field = 'name', res =res(r)[1],extent=extent(r))
-zonalStat<-function(zonal.ras,val.ras,stat='mean'){
-    myZonal <- function (x, z, stat, digits =0, na.rm = TRUE,
-                         ...) {
-        library(data.table)
-        library(raster)
-        fun <- match.fun(stat)
-        vals <- getValues(x)
-        zones <- round(getValues(z), digits = digits)
-        rDT <- data.table(vals, z=zones)
-        setkey(rDT, z)
-        rDT[, lapply(.SD, fun), by=z]
-    }
-    Zstat<-data.frame(myZonal(val.ras, zonal.ras, stat=stat))
+zonalStat<-function(zonal.ras,val.ras,stat='mean',digits=0){
+
+    library(data.table)
+    library(raster)
+    fun <- match.fun(stat)
+    vals <- getValues(val.ras)
+    zones <- round(getValues(zonal.ras), digits = digits)
+    rDT <- data.table(vals, z=zones)
+    setkey(rDT, z)
+    Zstat<-data.frame(rDT[, lapply(.SD, fun), by=z])
     colnames(Zstat)[2:length(Zstat)]<-
         paste0("B", c(1:(length(Zstat)-1)), "_",stat)
     return (Zstat)
 }
+# myZonal <- function (x, z, stat, digits =0, na.rm = TRUE,
+#                      ...) {
+#     # x<-o3.test1
+#     # z<-zonal.ras
+#     # digits<-0
+#     # stat<-'mean'
+#
+# }

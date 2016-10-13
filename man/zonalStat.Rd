@@ -4,7 +4,7 @@
 \alias{zonalStat}
 \title{High performance zonal statistics function.}
 \usage{
-zonalStat(zonal.ras, val.ras, stat = "mean")
+zonalStat(zonal.ras, val.ras, stat = "mean", digits = 0)
 }
 \arguments{
 \item{zonal.ras}{a raster objects indicating each zone}
