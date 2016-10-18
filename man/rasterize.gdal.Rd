@@ -4,10 +4,10 @@
 \alias{rasterize.gdal}
 \title{High performance rasterize function using gdalUtils.}
 \usage{
-rasterize.gdal(x, field, res = 10000, extent = NULL)
+rasterize.gdal(obj, field, res = 10000, extent = NULL)
 }
 \arguments{
-\item{x}{a Spatial*DataFrame objects.}
+\item{obj}{a Spatial*DataFrame objects.}
 
 \item{field}{character.The column name of the variable to be transferred}
 
