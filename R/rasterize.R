@@ -11,6 +11,7 @@
 #' ###############################
 #' # rasterize points
 #' ###############################
+#' library(raster)
 #' r <- raster(ncols=36, nrows=18)
 #' n <- 1000
 #' x <- runif(n) * 360 - 180
@@ -20,9 +21,8 @@
 #' vals <- 1:n
 #' p <- data.frame(xy, name=vals)
 #' coordinates(p) <- ~x+y
-#' ## If you are using windows,you must set local GDAL installation options before running function###
-#' #Not run:
-#' #gdal_setInstallation(search_path = 'the path of OSGeo4W64/bin',rescan = T)
+#' ## If you are using windows,you must set local GDAL installation options before running function####'
+#' install.gdal()
 #' r2 <- rasterize.gdal(p, field = 'name', res =res(r)[1],extent=extent(r))
 rasterize.gdal<-function(obj,field,res=1e4,extent=NULL){
     library(rgdal)
