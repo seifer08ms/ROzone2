@@ -12,6 +12,9 @@ install.gdal(install_path = "c:/gdal_map_win", proxy_url = NULL)
 
 \item{proxy_url}{character indicating proxy url. The format is 'http://server_host:port'}
 }
+\value{
+returns an logical value which represents whether GDAL binary installing is success
+}
 \description{
 Download and configure GDAL binary utilities under windows.
 This function help to download and install GDAL binary utilities.
@@ -20,6 +23,6 @@ This function help to download and install GDAL binary utilities.
 This function will download gdal binary(with proxy), and set the search path for gdal_setInstallation automatically.
 }
 \examples{
-install.gdal(install_path='/tmp/gisinter',proxy_url="http://127.0.0.1:8087/")
+install.gdal(install_path='/c/gdalwin')
 }
 
