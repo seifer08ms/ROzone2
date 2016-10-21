@@ -2,8 +2,7 @@
 % Please edit documentation in R/configGDAL.R
 \name{install.gdal}
 \alias{install.gdal}
-\title{Download and configure GDAL binary utilities under windows.
-This function help to download and install GDAL binary utilities.}
+\title{Download and configure GDAL binary utilities under windows.}
 \usage{
 install.gdal(install_path = "c:/gdal_map_win", proxy_url = NULL,
   manual = F)
@@ -19,7 +18,6 @@ install.gdal(install_path = "c:/gdal_map_win", proxy_url = NULL,
 returns an logical value which represents whether GDAL binary installing is successful
 }
 \description{
-Download and configure GDAL binary utilities under windows.
 This function help to download and install GDAL binary utilities.
 }
 \details{

@@ -1,5 +1,5 @@
-#' Download and configure GDAL binary utilities under windows.
-#' This function help to download and install GDAL binary utilities.
+#' @title Download and configure GDAL binary utilities under windows.
+#' @description  This function help to download and install GDAL binary utilities.
 #' @param install_path character. path for unzip of GDAL binary utilities
 #' @param proxy_url character indicating proxy url. The format is 'http://server_host:port'
 #' @param manual logical indicating whether to download gdal binanry tools manually.It only works for windows.The default value is false.If it is true ,the download page will be opened in browser.
@@ -26,7 +26,6 @@ install.gdal<-function(install_path='c:/gdal_map_win',proxy_url=NULL,manual=F){
             line <- readline()
         }else{
             #automatically download gdal binary tools
-            url<-paste0(u,ostype)
             if(!dir.exists(install_path)){
                 # need to clone files into install_path
                 #library(git2r)
