@@ -5,7 +5,7 @@
 \title{Download and configure GDAL binary utilities under windows.}
 \usage{
 install.gdal(install_path = "c:/gdal_map_win", proxy_url = NULL,
-  manual = F)
+  manual = F, url = "https://git.oschina.net/seifer_08ms/gisinter_gdal.git")
 }
 \arguments{
 \item{install_path}{character. path for unzip of GDAL binary utilities}
@@ -13,6 +13,8 @@ install.gdal(install_path = "c:/gdal_map_win", proxy_url = NULL,
 \item{proxy_url}{character indicating proxy url. The format is 'http://server_host:port'}
 
 \item{manual}{logical indicating whether to download gdal binanry tools manually.It only works for windows.The default value is false.If it is true ,the download page will be opened in browser.}
+
+\item{url}{character indicating the remote repository which contains gdal binary tools to clone.If you are not sure about this parameter,do not change its value.}
 }
 \value{
 returns an logical value which represents whether GDAL binary installing is successful
