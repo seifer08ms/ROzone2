@@ -16,4 +16,5 @@ Imports: dplyr,
     stringr,
     gdalUtils,
     raster,
-    data.table
+    data.table,
+    git2r

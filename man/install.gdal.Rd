@@ -5,15 +5,18 @@
 \title{Download and configure GDAL binary utilities under windows.
 This function help to download and install GDAL binary utilities.}
 \usage{
-install.gdal(install_path = "c:/gdal_map_win", proxy_url = NULL)
+install.gdal(install_path = "c:/gdal_map_win", proxy_url = NULL,
+  manual = F)
 }
 \arguments{
 \item{install_path}{character. path for unzip of GDAL binary utilities}
 
 \item{proxy_url}{character indicating proxy url. The format is 'http://server_host:port'}
+
+\item{manual}{logical indicating whether to download gdal binanry tools manually.It only works for windows.The default value is false.If it is true ,the download page will be opened in browser.}
 }
 \value{
-returns an logical value which represents whether GDAL binary installing is success
+returns an logical value which represents whether GDAL binary installing is successful
 }
 \description{
 Download and configure GDAL binary utilities under windows.
@@ -21,6 +24,8 @@ This function help to download and install GDAL binary utilities.
 }
 \details{
 This function will download gdal binary(with proxy), and set the search path for gdal_setInstallation automatically.
+
+If manual if true, you have to download files by your hands.Functions will wait until your hit enter to continue and try to complete the rest configuration.
 }
 \examples{
 install.gdal(install_path='/c/gdalwin')
